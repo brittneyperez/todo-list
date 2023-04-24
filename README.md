@@ -1,1 +1,1 @@
-# CORE Assignment #10: **Todo List** (Two Component Version)
+# CORE Assignment #10: **Todo List**

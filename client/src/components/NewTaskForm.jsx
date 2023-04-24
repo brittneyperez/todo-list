@@ -8,18 +8,18 @@ const NewTaskForm = ({ todoList, setTodoList }) => { // deconstruct props object
     }
     const submitHandler = (e) => {
         e.preventDefault();
-        // ? prevent submitting empty data
-        if (newTodo.length === 0) {
-            return;
+        if (newTodo.length === 0) { // ? prevent submitting empty data
+            return
         }
-        
-        setTodoList([...todoList, {
+        const newTaskData = {
             content: newTodo,
             completed: false,
             id: Math.floor(Math.random() * 100000000).toString() // since there is no back-end, we need to genereate our own id
-        }]);
+        };
+        setTodoList([...todoList, newTaskData]);
+        // localStorage.setItem("tasks", JSON.stringify([...todoList, newTaskData]));
         setNewTodo("");
-    }
+    };
     
     return (
         <div>
@@ -27,7 +27,7 @@ const NewTaskForm = ({ todoList, setTodoList }) => { // deconstruct props object
                 <form onSubmit={ (e)=>submitHandler(e) } className="d-flex col-4 offset-4 my-4">
                     <input onChange={ changeHandler } value={ newTodo } type='text' placeholder='Enter a task' className="mx-auto form-control" style={{width:'250px'}} />
                     <div className='ms-1'>
-                        <button className="btn btn-info">Add</button>
+                        <button className="btn btn-dark">Add</button>
                     </div>
                 </form>
             </div>
